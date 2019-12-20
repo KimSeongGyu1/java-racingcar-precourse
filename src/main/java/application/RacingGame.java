@@ -11,6 +11,11 @@ public class RacingGame {
 		System.out.println(racingCars.toString());
 		
 		enterRounds();
+		for (int i = 0; i < this.rounds.getRounds(); i++) {
+			System.out.println(i);
+			racingCars.goOrStay();
+			System.out.println(racingCars.convertStatesToString());
+		}
 	}
 	
 	private void enterRounds() {

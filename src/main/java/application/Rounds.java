@@ -3,7 +3,7 @@ package application;
 public class Rounds {
 	private static final int MIN_ROUNDS = 1;
 	
-	private int rounds;
+	private final int rounds;
 	
 	public Rounds(int input) {
 		checkValidInput(input);
@@ -14,5 +14,9 @@ public class Rounds {
 		if (input < MIN_ROUNDS) {
 			throw new IllegalArgumentException("1 이상의 숫자를 입력해주세요");
 		}
+	}
+	
+	public int getRounds() {
+		return this.rounds;
 	}
 }

@@ -2,6 +2,7 @@ package domain;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import view.InputView;
 
@@ -15,7 +16,7 @@ public class RacingCars {
 	private void generateCars() {
 		try {
 			List<String> input = InputView.enterCarNames();
-			checkValidCarNames(input);
+			RacingCarsException.checkValidCarNames(input);
 			generateCarsFromNames(input);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -29,21 +30,22 @@ public class RacingCars {
 			.forEach(car -> this.racingCars.add(car));
 	}
 	
-	private void checkValidCarNames(List<String> input) {
-		checkOverlappingNames(input);
-	}
-	
-	private void checkOverlappingNames(List<String> input) {
-		if (input.stream().distinct().count() != input.size()) {
-			throw new IllegalArgumentException("중복되지 않은 이름을 입력해주세요");
-		}
-	}
-	
 	public String toString() {
 		StringBuilder SB = new StringBuilder();
 		for (Car car : this.racingCars) {
 			SB.append(car.getName() + " ");
 		}
 		return SB.toString();
+	}
+	
+	public void goOrStay() {
+		this.racingCars.stream()
+				.forEach(car -> car.goOrStay());
+	}
+	
+	public String convertStatesToString() {
+		return this.racingCars.stream()
+				.map(car -> car.convertStatesToString())
+				.collect(Collectors.joining("\n"));
 	}
 }
