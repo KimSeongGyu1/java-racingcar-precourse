@@ -10,11 +10,9 @@ public class RacingGame {
 	private Rounds rounds;
 	
 	public void play() {
-		RacingCars racingCars = new RacingCars();
-		
+		RacingCars racingCars = new RacingCars();		// 생성하면서 이름들을 입력받는다
 		enterRounds();
 		proceedRounds(racingCars);
-		
 		getWinner(racingCars);
 	}
 	
