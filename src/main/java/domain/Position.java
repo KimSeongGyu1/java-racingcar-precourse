@@ -38,4 +38,12 @@ public class Position {
 	public void setTo(Position input) {
 		this.position = input.getPosition();
 	}
+	
+	public String toString() {
+		StringBuilder output = new StringBuilder();
+		for (int i = 0; i < this.position; i++) {
+			output.append("-");
+		}
+		return output.toString();
+	}
 }

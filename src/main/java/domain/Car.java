@@ -19,9 +19,7 @@ public class Car {
 	public String convertStatesToString() {
 		StringBuilder output = new StringBuilder();
 		output.append(this.carName.getName() + ":");
-		for (int i = 0; i < this.position.getPosition(); i++) {
-			output.append("-");
-		}
+		output.append(this.position.toString());
 		return output.toString();
 	}
 	
