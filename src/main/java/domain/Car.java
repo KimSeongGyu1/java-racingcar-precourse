@@ -24,4 +24,19 @@ public class Car {
 		}
 		return output.toString();
 	}
+	
+	public boolean isWinnerCandidate(Position maxPosition) {
+		if (!this.position.isSmallerThan(maxPosition)) {
+			maxPosition.setTo(this.position);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean hasBiggerPosition(Position maxPosition) {
+		if (this.position.isBiggerThan(maxPosition)) {
+			return true;
+		}
+		return false;
+	}
 }

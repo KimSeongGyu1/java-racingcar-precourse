@@ -21,4 +21,21 @@ public class Position {
 		return this.position;
 	}
 	
+	public boolean isBiggerThan(Position input) {
+		if (this.position > input.getPosition()) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isSmallerThan(Position input) {
+		if (this.position < input.getPosition()) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void setTo(Position input) {
+		this.position = input.getPosition();
+	}
 }

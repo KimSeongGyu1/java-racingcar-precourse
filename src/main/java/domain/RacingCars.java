@@ -30,14 +30,6 @@ public class RacingCars {
 			.forEach(car -> this.racingCars.add(car));
 	}
 	
-	public String toString() {
-		StringBuilder SB = new StringBuilder();
-		for (Car car : this.racingCars) {
-			SB.append(car.getName() + " ");
-		}
-		return SB.toString();
-	}
-	
 	public void goOrStay() {
 		this.racingCars.stream()
 				.forEach(car -> car.goOrStay());
@@ -47,5 +39,21 @@ public class RacingCars {
 		return this.racingCars.stream()
 				.map(car -> car.convertStatesToString())
 				.collect(Collectors.joining("\n"));
+	}
+	
+	public List<Car> getWinner() {
+		List<Car> winner = new ArrayList<Car>();
+		Position maxPosition = new Position();				// 0으로 초기화 된다
+		this.racingCars.stream()
+				.filter(car -> car.isWinnerCandidate(maxPosition))
+				.forEach(car -> updateWinner(winner, car, maxPosition));
+		return winner;
+	}
+	
+	private void updateWinner(List<Car> winner, Car candidate, Position maxPosition) {
+		if (candidate.hasBiggerPosition(maxPosition)) {
+			winner.clear();
+		}
+		winner.add(candidate);
 	}
 }
